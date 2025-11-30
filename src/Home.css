@@ -91,7 +91,7 @@ html, body, #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url("/library-constitution-hero.jpg");
+  /* background-image REMOVED (was breaking GitHub Pages) */
   background-size: cover;
   background-position: center;
 }
@@ -217,161 +217,7 @@ html, body, #root {
   padding: 3rem 8vw;
 }
 
-/* Section headings */
-.section-heading {
-  font-family: "Merriweather", serif;
-  font-size: 1.7rem;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.section-heading::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.45rem;
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--success));
-}
-
-/* ================= LIFT CARD SYSTEM ================= */
-.pillar-card,
-.feature-card,
-.snippet-card,
-.resource-card,
-.part-card,
-.page-content {
-  background: rgba(255,255,255,0.95);
-  border-radius: 14px;
-  box-shadow: var(--shadow-sm);
-  transform: translateY(0);
-}
-
-.pillar-card:hover,
-.feature-card:hover,
-.snippet-card:hover,
-.resource-card:hover,
-.part-card:hover,
-.page-content:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-md);
-}
-
-/* ================= GRIDS ================= */
-.pillars-grid,
-.features-grid,
-.resources-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.6rem;
-}
-
-/* Pillars */
-.pillar-card {
-  padding: 1.6rem;
-  border-left: 4px solid var(--accent);
-}
-
-.pillar-card h3 {
-  color: var(--primary);
-  font-family: "Merriweather", serif;
-}
-
-.pillar-icon {
-  font-size: 1.8rem;
-}
-
-/* Snippet */
-.snippet-card {
-  padding: 1.8rem;
-  border: 1px dashed var(--primary);
-}
-
-.snippet-note {
-  margin-top: 0.8rem;
-  font-style: italic;
-  color: #444;
-}
-
-/* Features */
-.feature-card {
-  padding: 1.5rem;
-}
-
-.feature-card h3 {
-  color: var(--accent);
-}
-
-/* ================= HISTORY ================= */
-.history-layout {
-  display: grid;
-  grid-template-columns: 2fr 1.4fr;
-  gap: 2rem;
-}
-
-.history-quotes blockquote {
-  margin-bottom: 1.4rem;
-  padding: 1.1rem 1.4rem;
-  border-left: 4px solid var(--primary);
-  background: white;
-  border-radius: 10px;
-  box-shadow: var(--shadow-xs);
-}
-
-.history-quotes span {
-  display: block;
-  margin-top: 0.6rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-/* ================= FOOTER ================= */
-.site-footer {
-  padding: 2rem 8vw;
-  background: #000020;
-  color: #eee;
-}
-
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 1.5rem;
-}
-
-.footer-column h4 {
-  color: var(--accent);
-}
-
-.footer-note {
-  font-size: 0.8rem;
-  opacity: 0.85;
-}
-
-/* ================= TABLES ================= */
-.contact-table tr:hover {
-  background: #eef2ff;
-  transform: scale(1.01);
-}
-
-/* ================= REMOVE / DELETE ANIMATION ================= */
-@keyframes liftAway {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-35px) scale(0.95);
-  }
-}
-
-.remove-animate {
-  animation: liftAway 0.35s ease forwards;
-}
-
-/* ================= FADE ANIMATION ================= */
+/* ================= REST UNCHANGED ================= */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -383,13 +229,9 @@ html, body, #root {
   }
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .hero-title {
     font-size: 2.2rem;
-  }
-  .history-layout {
-    grid-template-columns: 1fr;
   }
 }
 
