@@ -1,0 +1,123 @@
+{
+  "parts": [
+    {
+      "part_id": "I",
+      "part_title": "The Union and Its Territory",
+      "article_range": "1–4",
+      "status": "active",
+      "articles": [
+        {
+          "article_number": "1",
+          "article_title": "Name and territory of the Union"
+        },
+        {
+          "article_number": "2",
+          "article_title": "Admission or establishment of new States"
+        },
+        {
+          "article_number": "3",
+          "article_title": "Formation of new States and alteration of areas"
+        },
+        {
+          "article_number": "4",
+          "article_title": "Laws relating to alteration of States"
+        }
+      ]
+    },
+    {
+      "part_id": "II",
+      "part_title": "Citizenship",
+      "article_range": "5–11",
+      "status": "active",
+      "articles": [
+        {
+          "article_number": "5",
+          "article_title": "Citizenship at the commencement of the Constitution"
+        },
+        {
+          "article_number": "6",
+          "article_title": "Rights of citizenship of certain migrants to India"
+        },
+        {
+          "article_number": "7",
+          "article_title": "Rights of citizenship of certain migrants to Pakistan"
+        },
+        {
+          "article_number": "10",
+          "article_title": "Continuance of the rights of citizenship"
+        },
+        {
+          "article_number": "11",
+          "article_title": "Parliament to regulate the right of citizenship"
+        }
+      ]
+    },
+    {
+      "part_id": "III",
+      "part_title": "Fundamental Rights",
+      "article_range": "12–35",
+      "status": "active",
+      "chapters": [
+        {
+          "chapter_id": "I",
+          "chapter_title": "General",
+          "articles": [
+            {
+              "article_number": "12",
+              "article_title": "Definition of the State"
+            },
+            {
+              "article_number": "13",
+              "article_title": "Laws inconsistent with Fundamental Rights"
+            }
+          ]
+        },
+        {
+          "chapter_id": "II",
+          "chapter_title": "Right to Equality",
+          "articles": [
+            {
+              "article_number": "14",
+              "article_title": "Equality before law"
+            },
+            {
+              "article_number": "15",
+              "article_title": "Prohibition of discrimination"
+            },
+            {
+              "article_number": "16",
+              "article_title": "Equality of opportunity in public employment"
+            },
+            {
+              "article_number": "17",
+              "article_title": "Abolition of untouchability"
+            },
+            {
+              "article_number": "18",
+              "article_title": "Abolition of titles"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "part_id": "IVA",
+      "part_title": "Fundamental Duties",
+      "article_range": "51A",
+      "status": "active",
+      "articles": [
+        {
+          "article_number": "51A",
+          "article_title": "Fundamental Duties of citizens"
+        }
+      ]
+    },
+    {
+      "part_id": "VII",
+      "part_title": "Part Repealed",
+      "article_range": "-",
+      "status": "repealed",
+      "articles": []
+    }
+  ]
+}

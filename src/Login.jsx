@@ -1,5 +1,6 @@
 //proj updated
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const roles = [
@@ -10,9 +11,9 @@ const roles = [
   { value: 'legal_expert', label: 'Legal Expert' }
 ];
 
-class Login extends Component {
-    constructor() {
-        super();
+class LoginInner extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             signup: false,
             signupData: {
@@ -87,18 +88,31 @@ class Login extends Component {
 
     handleLogin = (e) => {
         e.preventDefault();
-        // Add login logic here
+        // Here you would normally call your backend to verify credentials.
+        // For now we'll assume the login is successful if fields are non-empty.
+        const { email, password, role } = this.state.loginData;
+        if (!email || !password || !role) {
+            alert("Please fill in role, email and password to login.");
+            return;
+        }
+
+        if (this.props.onLoginSuccess) {
+            this.props.onLoginSuccess();
+        }
     };
 
     render() {
         const { signup, signupData, loginData, errData } = this.state;
         return (
-            <div className='login'>
-                <div className='leftpanel'>
-                    <h1>Welcome Back!</h1>
-                    <p>Access and manage your task efficiently</p>
-                </div>
-                <div className='rightpanel'>
+            <div className='login login-full-bg'>
+                <button
+                    type="button"
+                    className="back-home-button"
+                    onClick={() => this.props.navigate("/")}
+                >
+                    4 Back to Home
+                </button>
+                <div className='rightpanel login-card-right'>
                     <form className='card' onSubmit={this.handleLogin}>
                         <h2>Login</h2>
                         <label htmlFor="loginRole">Role</label>
@@ -258,6 +272,11 @@ class Login extends Component {
             </div>
         );
     }
+}
+
+function Login(props) {
+    const navigate = useNavigate();
+    return <LoginInner {...props} navigate={navigate} />;
 }
 
 export default Login;

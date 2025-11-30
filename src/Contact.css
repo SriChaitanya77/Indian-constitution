@@ -1,0 +1,105 @@
+/* ================= CONTACT CONTAINER ================= */
+.contact-container {
+  max-width: 1300px;
+  margin: 3rem auto;
+  padding: 3rem 2.5rem;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,153,51,0.05),
+    rgba(19,136,8,0.05)
+  );
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ================= TITLE ================= */
+.contact-title {
+  font-size: 2.4rem;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.contact-desc {
+  text-align: center;
+  color: #444;
+  margin-bottom: 3rem;
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin: 3rem 0 1.2rem;
+  border-left: 5px solid var(--success);
+  padding-left: 0.75rem;
+}
+
+/* ================= TABLE CARD ================= */
+.table-card {
+  background: white;
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================= TABLE ================= */
+.contact-table-wrapper {
+  overflow-x: auto;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.contact-table thead {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,128,0.95),
+    rgba(0,0,160,0.95)
+  );
+  color: white;
+}
+
+.contact-table th,
+.contact-table td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.contact-table tbody tr {
+  background: white;
+}
+
+.contact-table tbody tr:nth-child(even) {
+  background: #f8f9ff;
+}
+
+/* ================= ROW ANIMATION ================= */
+.contact-table tbody tr:hover {
+  transform: scale(1.015);
+  background: #eef2ff;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ================= FADE ================= */
+.fade-in {
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 2rem 1.2rem;
+  }
+
+  .contact-title {
+    font-size: 1.9rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+}

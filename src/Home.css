@@ -1,0 +1,403 @@
+/* ================= RESET & ROOT ================= */
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  background: white;
+}
+
+:focus {
+  outline: none;
+}
+
+:root {
+  --primary: #000080;
+  --accent: #ff9933;
+  --success: #138808;
+
+  --shadow-xs: 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-sm: 0 6px 16px rgba(0,0,0,0.08);
+  --shadow-md: 0 12px 28px rgba(0,0,0,0.12);
+  --shadow-lg: 0 20px 45px rgba(0,0,0,0.18);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth feel everywhere */
+* {
+  box-sizing: border-box;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(90deg, #ff9933, #ffffff, #138808);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+}
+
+.navbar a:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.nav-logout {
+  margin-left: auto;
+  padding: 0.35rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background: rgba(255,255,255,0.9);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+.nav-logout:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-logout:active {
+  transform: translateY(2px) scale(0.97);
+}
+
+/* ================= HOME LANDING ================= */
+.home-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url("/library-constitution-hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Login Button */
+.home-login-button {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.6rem;
+  z-index: 20;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.home-login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.home-login-button:active {
+  transform: scale(0.96);
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  padding: 5rem 8vw 4rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.15), rgba(0,0,0,0.7));
+}
+
+.hero-content {
+  position: relative;
+  max-width: 650px;
+  color: white;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero-subtitle-heading {
+  font-family: "Merriweather", serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* CTA Buttons */
+.primary-cta,
+.secondary-cta {
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.primary-cta {
+  background: linear-gradient(135deg, #ff9933, #ffc266);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondary-cta {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.8);
+  color: white;
+}
+
+.primary-cta:hover,
+.secondary-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.primary-cta:active,
+.secondary-cta:active {
+  transform: scale(0.95);
+}
+
+/* ================= MAIN CONTENT ================= */
+.home-main {
+  flex: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.92),
+    rgba(255,255,255,0.98)
+  );
+  backdrop-filter: blur(2px);
+  padding: 3rem 8vw;
+}
+
+/* Section headings */
+.section-heading {
+  font-family: "Merriweather", serif;
+  font-size: 1.7rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--success));
+}
+
+/* ================= LIFT CARD SYSTEM ================= */
+.pillar-card,
+.feature-card,
+.snippet-card,
+.resource-card,
+.part-card,
+.page-content {
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(0);
+}
+
+.pillar-card:hover,
+.feature-card:hover,
+.snippet-card:hover,
+.resource-card:hover,
+.part-card:hover,
+.page-content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ================= GRIDS ================= */
+.pillars-grid,
+.features-grid,
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.6rem;
+}
+
+/* Pillars */
+.pillar-card {
+  padding: 1.6rem;
+  border-left: 4px solid var(--accent);
+}
+
+.pillar-card h3 {
+  color: var(--primary);
+  font-family: "Merriweather", serif;
+}
+
+.pillar-icon {
+  font-size: 1.8rem;
+}
+
+/* Snippet */
+.snippet-card {
+  padding: 1.8rem;
+  border: 1px dashed var(--primary);
+}
+
+.snippet-note {
+  margin-top: 0.8rem;
+  font-style: italic;
+  color: #444;
+}
+
+/* Features */
+.feature-card {
+  padding: 1.5rem;
+}
+
+.feature-card h3 {
+  color: var(--accent);
+}
+
+/* ================= HISTORY ================= */
+.history-layout {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr;
+  gap: 2rem;
+}
+
+.history-quotes blockquote {
+  margin-bottom: 1.4rem;
+  padding: 1.1rem 1.4rem;
+  border-left: 4px solid var(--primary);
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-xs);
+}
+
+.history-quotes span {
+  display: block;
+  margin-top: 0.6rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  padding: 2rem 8vw;
+  background: #000020;
+  color: #eee;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 1.5rem;
+}
+
+.footer-column h4 {
+  color: var(--accent);
+}
+
+.footer-note {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* ================= TABLES ================= */
+.contact-table tr:hover {
+  background: #eef2ff;
+  transform: scale(1.01);
+}
+
+/* ================= REMOVE / DELETE ANIMATION ================= */
+@keyframes liftAway {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-35px) scale(0.95);
+  }
+}
+
+.remove-animate {
+  animation: liftAway 0.35s ease forwards;
+}
+
+/* ================= FADE ANIMATION ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .history-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-main {
+    padding: 2rem 1.5rem;
+  }
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+}

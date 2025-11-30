@@ -1,168 +1,108 @@
-//changed dashboard
+// src/Dashboard.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Add this import
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
-// Sample data - Move to separate data file later
-const quickFacts = [
-  "The Indian Constitution is the longest written Constitution in the world.",
-  "It took 2 years, 11 months and 18 days to complete the Constitution.",
-  "The original Constitution had 395 Articles and 8 Schedules.",
-  "Dr. B.R. Ambedkar is known as the Father of Indian Constitution.",
-];
-
-const recentAmendments = [
-  {
-    number: "104th",
-    year: "2019",
-    summary: "Extension of reservation for SC/ST in Parliament",
-  },
-  {
-    number: "103rd",
-    year: "2019",
-    summary: "Introduced EWS reservation of 10%",
-  },
-];
-
-// Add this constant at the top with other constants
-const preambleText = `WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC and to secure to all its citizens:
+const preambleText = `WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a 
+SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC and to secure to all its citizens:
 
 JUSTICE, social, economic and political;
 LIBERTY of thought, expression, belief, faith and worship;
-EQUALITY of status and of opportunity; and to promote among them all
-FRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation;
+EQUALITY of status and of opportunity;
+FRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation.`;
 
-IN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.`;
+const quickFacts = [
+  "Indian Constitution is the longest written Constitution in the world.",
+  "It came into effect on 26 January 1950.",
+  "Dr. B. R. Ambedkar chaired the Drafting Committee.",
+  "The Constitution balances Fundamental Rights and Duties."
+];
+
+const recentAmendments = [
+  { no: "104th", year: "2019", text: "Extended SC/ST reservation in Parliament" },
+  { no: "103rd", year: "2019", text: "Introduced 10% EWS reservation" }
+];
 
 export default function Dashboard() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [currentFact, setCurrentFact] = useState(0);
-  // In your Dashboard component, add a new state for preamble expansion
-  const [isPreambleExpanded, setIsPreambleExpanded] = useState(false);
-
-  // Add click handler for nav tiles
-  const handleNavClick = (section) => {
-    // Navigation logic will go here
-    console.log(`Navigating to ${section}`);
-  };
+  const [dark, setDark] = useState(false);
+  const [showFullPreamble, setShowFullPreamble] = useState(false);
+  const [factIndex, setFactIndex] = useState(0);
 
   return (
-    <div className={`dashboard ${isDarkMode ? 'dark-mode' : ''}`}>
-      {/* Header Section */}
-      <header className="dashboard-header">
-        <div className="header-content">
-          <h1>Indian Constitution Dashboard</h1>
-          <div className="header-controls">
-            <input
-              type="search"
-              placeholder="Search articles, amendments..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button 
-              className="theme-toggle"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-            >
-              {isDarkMode ? "Light Mode" : "Dark Mode"}
-            </button>
-          </div>
+    <div className={`dashboard ${dark ? "dark" : ""}`}>
+      {/* Header */}
+      <header className="dash-header">
+        <div>
+          <h1>Constitution Dashboard</h1>
+          <p className="header-sub">Your quick constitutional overview</p>
         </div>
+        <button className="theme-btn" onClick={() => setDark(!dark)}>
+          {dark ? "☀ Light Mode" : "🌙 Dark Mode"}
+        </button>
       </header>
 
-      <div className="dashboard-grid">
-        {/* Preamble Section */}
-        <section className="preamble-card">
-          <h2>Preamble to the Constitution of India</h2>
-          <div className="preamble-scroll-container">
-            <div className={`preamble-content ${isPreambleExpanded ? 'expanded' : ''}`}>
-              <p>{preambleText}</p>
-            </div>
-          </div>
-          <button 
-            className="expand-button"
-            onClick={() => setIsPreambleExpanded(!isPreambleExpanded)}
-          >
-            {isPreambleExpanded ? 'Show Less' : 'Read Full Preamble'}
+      {/* Overview Stats */}
+      <section className="stats-grid">
+        <div className="stat-card">📘 <span>25</span> Parts</div>
+        <div className="stat-card">📜 <span>448</span> Articles</div>
+        <div className="stat-card">🧾 <span>12</span> Schedules</div>
+        <div className="stat-card">🛠 <span>105</span> Amendments</div>
+      </section>
+
+      {/* Main Content */}
+      <main className="dash-grid">
+        {/* Preamble */}
+        <section className="card preamble">
+          <h2>Preamble of India</h2>
+          <p className={`preamble-text ${showFullPreamble ? "show" : ""}`}>
+            {preambleText}
+          </p>
+          <button onClick={() => setShowFullPreamble(!showFullPreamble)}>
+            {showFullPreamble ? "Show Less" : "Read Full Preamble"}
           </button>
         </section>
 
-        {/* Quick Navigation */}
-        <section className="quick-nav">
-          <h2>Quick Navigation</h2>
-          <div className="nav-tiles">
-            {["Parts", "Schedules", "Articles", "Amendments"].map((section) => (
-              <div 
-                key={section}
-                className="nav-tile"
-                onClick={() => handleNavClick(section)}
-                role="button"
-                tabIndex={0}
-              >
-                {section}
-              </div>
-            ))}
+        {/* Navigation */}
+        <section className="card">
+          <h2>Explore Portal</h2>
+          <div className="nav-grid">
+            <Link to="/articles">📖 Articles</Link>
+            <Link to="/resources">📚 Resources</Link>
+            <Link to="/quiz">📝 Quiz</Link>
+            <Link to="/contact">☎ Contact</Link>
           </div>
         </section>
 
-        {/* Featured Sections */}
-        <section className="featured-sections">
-          {[
-            {
-              title: "Fundamental Rights",
-              description: "Articles 12-35 in Part III of Constitution",
-              path: "/articles/fundamental-rights"
-            },
-            {
-              title: "Directive Principles",
-              description: "Articles 36-51 in Part IV of Constitution",
-              path: "/articles/directive-principles"
-            },
-            {
-              title: "Fundamental Duties",
-              description: "Article 51A in Part IVA of Constitution",
-              path: "/articles/fundamental-duties"
-            }
-          ].map((feature, index) => (
-            <div key={index} className="feature-card">
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-              <Link to={feature.path} className="read-more">
-                Read More
-              </Link>
+        {/* Focus Areas */}
+        <section className="card">
+          <h2>Core Constitutional Areas</h2>
+          <ul className="clean-list">
+            <li>Fundamental Rights & Digital Privacy</li>
+            <li>Directive Principles & Governance</li>
+            <li>Fundamental Duties of Citizens</li>
+          </ul>
+        </section>
+
+        {/* Amendments */}
+        <section className="card">
+          <h2>Recent Amendments</h2>
+          {recentAmendments.map((a, i) => (
+            <div key={i} className="timeline-item">
+              <strong>{a.no} Amendment ({a.year})</strong>
+              <p>{a.text}</p>
             </div>
           ))}
         </section>
 
-        {/* Recent Amendments */}
-        <section className="amendments-section">
-          <h2>Recent Amendments</h2>
-          <div className="amendments-timeline">
-            {recentAmendments.map((amendment, index) => (
-              <div key={index} className="amendment-card">
-                <h4>{amendment.number} Amendment</h4>
-                <p className="year">{amendment.year}</p>
-                <p>{amendment.summary}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Did You Know */}
-        <section className="facts-widget">
+        {/* Facts */}
+        <section className="card center">
           <h2>Did You Know?</h2>
-          <div className="fact-card">
-            <p>{quickFacts[currentFact]}</p>
-            <button 
-              onClick={() => setCurrentFact((prev) => 
-                (prev + 1) % quickFacts.length
-              )}
-            >
-              Next Fact
-            </button>
-          </div>
+          <p className="fact">{quickFacts[factIndex]}</p>
+          <button onClick={() => setFactIndex((factIndex + 1) % quickFacts.length)}>
+            Next Fact
+          </button>
         </section>
-      </div>
+      </main>
     </div>
   );
 }
