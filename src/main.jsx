@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+import {
+  HashRouter,   // ✅ CHANGED
+  Routes,
+  Route,
+  Link,
+  useNavigate
+} from "react-router-dom";
 
 import Login from "./Login.jsx";
 import Home from "./Home.jsx";
 import Articles from "./Articles.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Resources from "./Resources.jsx";
-import QuizTopics from "./Quiz.jsx";      // topics list page
-import QuizRunner from "./QuizRunner.jsx"; // actual quiz page
+import QuizTopics from "./Quiz.jsx";
+import QuizRunner from "./QuizRunner.jsx";
 import Contact from "./Contact.jsx";
 
 import "./Home.css";
@@ -48,85 +54,104 @@ function AppRouter() {
   };
 
   return (
-    <>
-      <Routes>
-        {/* Public routes */}
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/login"
-          element={<Login onLoginSuccess={handleLoginSuccess} />}
-        />
+    <Routes>
+      {/* Public routes */}
+      <Route path="/" element={<Home />} />
+      <Route
+        path="/login"
+        element={<Login onLoginSuccess={handleLoginSuccess} />}
+      />
 
-        {/* Protected routes (only when logged in) */}
-        {isAuthenticated && (
-          <>
-            <Route
-              path="/articles"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <Articles />
-                </>
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <Dashboard />
-                </>
-              }
-            />
-            <Route
-              path="/resources"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <Resources />
-                </>
-              }
-            />
-            {/* Quiz topics list */}
-            <Route
-              path="/quiz"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <QuizTopics />
-                </>
-              }
-            />
-            {/* Quiz runner for selected subtopic */}
-            <Route
-              path="/quiz/:subtopicId"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <QuizRunner />
-                </>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <>
-                  <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-                  <Contact />
-                </>
-              }
-            />
-          </>
-        )}
-      </Routes>
-    </>
+      {/* Protected routes */}
+      {isAuthenticated && (
+        <>
+          <Route
+            path="/articles"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <Articles />
+              </>
+            }
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <Dashboard />
+              </>
+            }
+          />
+
+          <Route
+            path="/resources"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <Resources />
+              </>
+            }
+          />
+
+          <Route
+            path="/quiz"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <QuizTopics />
+              </>
+            }
+          />
+
+          <Route
+            path="/quiz/:subtopicId"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <QuizRunner />
+              </>
+            }
+          />
+
+          <Route
+            path="/contact"
+            element={
+              <>
+                <Navbar
+                  isAuthenticated={isAuthenticated}
+                  onLogout={handleLogout}
+                />
+                <Contact />
+              </>
+            }
+          />
+        </>
+      )}
+    </Routes>
   );
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>   {/* ✅ CHANGED */}
       <AppRouter />
-    </BrowserRouter>
+    </HashRouter>  {/* ✅ CHANGED */}
   </React.StrictMode>
 );
